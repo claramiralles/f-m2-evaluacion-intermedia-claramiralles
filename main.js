@@ -17,3 +17,20 @@ function getRandomNumber(max) {
   buttonEl.addEventListener('click', handlerAccessToInputAndShowItInConsole);
 
 
+//comparar el número que el usuario ha escrito en el input con el número aleatorio, y pintar el
+//feedback correspondiente en la pantalla ("demasiado alto", "demasiado bajo", "¡HAS
+//GANADO, CAMPEONA!")
+
+function compareInputNumberWithRandomNumberAndPaintItInConsole () {
+if ( getRandomNumber < inputEl.value) {
+    console.log('Demasiado alto');
+}
+else if (inputEl.value < getRandomNumber) {
+    console.log ('Demasiado bajo');
+}
+else if (inputEl.value === getRandomNumber) {
+    console.log ('¡HAS GANADO, CAMPEONA!');
+}
+} 
+
+compareInputNumberWithRandomNumberAndPaintItInConsole ();
