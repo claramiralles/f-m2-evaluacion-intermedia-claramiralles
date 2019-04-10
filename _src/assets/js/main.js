@@ -3,12 +3,12 @@
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
   }
-  console.log('> ' + getRandomNumber(100));
+const randomNumber= getRandomNumber(100);
 
   //al pulsar el botón de prueba, acceder al contenido del input y mostrarlo en la consola
 
-  let buttonEl=document.getElementById('player__button');
-  let inputEl=document.getElementById('player__input');
+  const buttonEl=document.getElementById('player__button');
+  const inputEl=document.getElementById('player__input');
 
   function handlerAccessToInputAndShowItInConsole(event){
       buttonEl=event.currentTarget;
@@ -22,13 +22,13 @@ function getRandomNumber(max) {
 //GANADO, CAMPEONA!")
 
 function compareInputNumberWithRandomNumberAndPaintItInConsole () {
-if ( getRandomNumber < inputEl.value) {
+if ( randomNumber < parseInt(inputEl.value)){
     console.log('Demasiado alto');
 }
-else if (inputEl.value < getRandomNumber) {
+else if (parseInt (inputEl.value) < randomNumber) {
     console.log ('Demasiado bajo');
 }
-else if (inputEl.value === getRandomNumber) {
+else if (parseInst (inputEl.value) === randomNumber) {
     console.log ('¡HAS GANADO, CAMPEONA!');
 }
 } 
