@@ -1,45 +1,47 @@
 'use strict';
 
-let buttonEl=document.getElementById('player__button');
-const inputEl=document.getElementById('player__input');
-const randomNumber=getRandomNumber(100);
-const guessNumber=parseInt (inputEl.value); 
+//Boton
+const buttonEl = document.querySelector('.button');
 
+//Texto jugador
+const inputEl = document.querySelector('.input');
 
-const counterText=document.querySelector('.counter');
-const counterEl= counter +=1;
-const counter=counterText.innerHTML;
-//arreglar el counter que esto no tiene lógica
+//Feedback juego
+const feedbackEl = document.querySelector('.speaker');
 
+//Contador
+const counterEl = document.querySelector('.counter');
+
+//crear un contador a 0
+let counter = 0;
+
+//Generar numero aleatorio y guardarlo en una constante
 function getRandomNumber(max) {
-    return Math.ceil(Math.random() * max);
+  return Math.ceil(Math.random() * max);
 }
-function handlerAccessToInputAndPaintIt(event){
-    buttonEl = event.currentTarget;
-    console.log(inputEl.value);
+const randomNumber = getRandomNumber(100);
+console.log(randomNumber);
+
+//funcion - que hacer cuando se hace click en buttonEl
+
+function handlerButtonClick () {
+//recojo el valor que ha puesto el usuario y lo parseo de string a number para poder operar con el
+  const inputText = parseInt(inputEl.value); 
+
+  //comparo el numero aleaotorio con el numero puesto por el visitante
+  if (randomNumber < inputText){
+    feedbackEl.innerHTML = 'Demasiado alto';
+  }
+  else if (randomNumber > inputText) {
+    feedbackEl.innerHTML = 'Demasiado bajo';
+  }
+  else if (inputText === randomNumber) {
+    feedbackEl.innerHTML = '¡HAS GANADO, CAMPEONA!';
+  }
+  //Aumentar el contador y poner su valor dentro del elemento html contador
+  counter += 1;
+  counterEl.innerHTML = counter;
 }
-buttonEl.addEventListener('click', handlerAccessToInputAndPaintIt); 
-//al pulsar el botón de prueba, acceder al contenido del input y mostrarlo en la consola
 
-function compareInputWithRandomAndPaintIt () {
-if (randomNumber < guessNumber){
-    console.log('Demasiado alto');
-}
-else if (guessNumber < randomNumber) {
-    console.log ('Demasiado bajo');
-}
-else if (guessNumber === randomNumber) {
-    console.log ('¡HAS GANADO, CAMPEONA!');
-}
-const userTries=compareInputWithRandomAndPaintIt ();
-
-//Aqui estoy perdida. Mirar ejemplos de funciones e intentar solucionarlo. Si no ver ejercicio de Nasi a ver que me falta.
-}
-
-
-
-
-//comparar el número que el usuario ha escrito en el input con el número aleatorio, y pintar el
-//feedback correspondiente en la pantalla ("demasiado alto", "demasiado bajo", "¡HAS
-//GANADO, CAMPEONA!")
-
+//escuchar click boton
+buttonEl.addEventListener('click', handlerButtonClick);
